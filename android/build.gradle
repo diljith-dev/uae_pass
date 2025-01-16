@@ -9,7 +9,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -17,9 +17,9 @@ rootProject.allprojects {
     repositories {
         google()
         mavenCentral()
-        flatDir {
-            dirs project(':uae_pass_flutter').file('libs')
-        }
+//        flatDir {
+//            dirs project(':uae_pass_flutter').file('libs')
+//        }
     }
 }
 allprojects {
@@ -34,7 +34,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
+    namespace = "uae.pass.flutter"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -60,7 +61,7 @@ android {
         implementation 'com.squareup.retrofit2:retrofit:2.9.0'
         implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
         implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
-        implementation 'com.google.code.gson:gson:2.8.6'
+        implementation 'com.google.code.gson:gson:2.10.1'
         implementation 'com.loopj.android:android-async-http:1.4.9'
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.0.0'
@@ -77,4 +78,8 @@ android {
             }
         }
     }
+}
+
+dependencies {
+   implementation files('libs/libraryuaepass.aar')
 }
